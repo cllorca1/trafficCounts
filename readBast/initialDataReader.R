@@ -123,7 +123,10 @@ for (studyAreaStation in studyAreaStations$station){
   
   for (hour in 1:24){
     count = counts24$count1[hour] * growthFactor * (100- HV)/100
-    if (is.na(count)) {count = 0}
+    if (is.na(count)) {
+      count = 0
+      print(paste(studyAreaStation, "is not available", sep=" "))
+      }
     text = paste("<volume h=\"",hour, "\" val=\"" ,count, "\"/>", sep = "")
     write(x=text, file="counts.xml", append = T, sep = "")
   }
